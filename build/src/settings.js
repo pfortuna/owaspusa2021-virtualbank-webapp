@@ -8,13 +8,17 @@ window.addEventListener("load", () => {
         const id = window.user.id;
         const email = document.querySelector("#email").value;
         const tfa = document.querySelector("#tfa").value;
+        var body = { email, tfa };
+        if (window.totp) {
+            body.ott = totp.get();
+        }        
         const requestOptions = {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             },
-            body: JSON.stringify({ email, tfa })
+            body: JSON.stringify(body)
         };
     
         return fetch(`http://api.virtualbank.com:4000/users/${id}`, requestOptions)
@@ -22,7 +26,7 @@ window.addEventListener("load", () => {
             .then(user => {
                 window.user.email = user.email; //update global var
                 localStorage.setItem('user', JSON.stringify(window.user)); //update LS
-                //window.location.href = '/account';
+                window.location.href = '/settings';
                 return user;
             });
     });
@@ -35,7 +39,7 @@ window.addEventListener("load", () => {
                     // auto logout if 401 response returned from api
                     //logout();
                     //location.reload(true);
-                    alert("401");
+                    alert("Your request was not authorized correctly!");
                 }
     
                 const error = (data && data.message) || response.statusText;

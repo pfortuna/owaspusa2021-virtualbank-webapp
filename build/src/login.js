@@ -35,7 +35,7 @@ window.addEventListener("load", () => {
                     // auto logout if 401 response returned from api
                     //logout();
                     //location.reload(true);
-                    alert("logout and reload");
+                    alert("Your request was not authorized correctly!");
                 }
     
                 const error = (data && data.message) || response.statusText;

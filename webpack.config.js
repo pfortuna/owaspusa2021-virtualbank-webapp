@@ -26,7 +26,7 @@ module.exports = {
   watch: env !== "production",
   plugins: [
     new JscramblerWebpack({
-      enable: true, // optional, defaults to true
+      enable: false, // optional, defaults to true
       //chunks: ['totp', 'login', 'settings'], // optional, defaults to all chunks
       //ignoreFile: resolve(__dirname, '.jscramblerignore'), // optional, defaults to no ignore file
       //params: [], 
