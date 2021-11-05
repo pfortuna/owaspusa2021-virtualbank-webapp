@@ -17,6 +17,3 @@ The use of Jscrambler can be set in `webpack.config.js` by controlling Jscramble
 ## Running
 To run, type `npm run watch`
 Open `http://virtualbank.com:3000`
-
-## Improvements
-- Make OTT be used in all API calls
